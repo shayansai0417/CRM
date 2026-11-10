@@ -1,0 +1,1025 @@
+{
+  "version": 1,
+  "className": "AIML Batch 1",
+  "lastUpdated": "2026-11-10T13:49:18.516Z",
+  "students": [
+    {
+      "id": "stu-1",
+      "sno": 1,
+      "name": "Pathaan Mohammed Wahid Ali Khan",
+      "roll_number": "261105B303001"
+    },
+    {
+      "id": "stu-2",
+      "sno": 2,
+      "name": "Jeel Nileshkumar Patel",
+      "roll_number": "261105B303002"
+    },
+    {
+      "id": "stu-3",
+      "sno": 3,
+      "name": "Sienna Moguloji",
+      "roll_number": "261105B303003"
+    },
+    {
+      "id": "stu-4",
+      "sno": 4,
+      "name": "Mohammad Akram",
+      "roll_number": "261105B303004"
+    },
+    {
+      "id": "stu-5",
+      "sno": 5,
+      "name": "Devaruppala Akshaya Preeti",
+      "roll_number": "261105B303005"
+    },
+    {
+      "id": "stu-6",
+      "sno": 6,
+      "name": "Meharin K Oommen",
+      "roll_number": "261105B303006"
+    },
+    {
+      "id": "stu-7",
+      "sno": 7,
+      "name": "Ashna Maira",
+      "roll_number": "261105B303007"
+    },
+    {
+      "id": "stu-8",
+      "sno": 8,
+      "name": "Sharane Gouda",
+      "roll_number": "261105B303008"
+    },
+    {
+      "id": "stu-9",
+      "sno": 9,
+      "name": "Uppoju Srinivas",
+      "roll_number": "261105B303009"
+    },
+    {
+      "id": "stu-10",
+      "sno": 10,
+      "name": "Acuythananda",
+      "roll_number": "261105B303010"
+    },
+    {
+      "id": "stu-11",
+      "sno": 11,
+      "name": "Nagilla Srividhya",
+      "roll_number": "261105B303011"
+    },
+    {
+      "id": "stu-12",
+      "sno": 12,
+      "name": "Ganta Vaishnavi",
+      "roll_number": "261105B303012"
+    },
+    {
+      "id": "stu-13",
+      "sno": 13,
+      "name": "Amulya",
+      "roll_number": "261105B303013"
+    },
+    {
+      "id": "stu-14",
+      "sno": 14,
+      "name": "Shaik Sana Sulthana",
+      "roll_number": "261105B303014"
+    },
+    {
+      "id": "stu-15",
+      "sno": 15,
+      "name": "Y.M.Abia Pritika Rani",
+      "roll_number": "261105B303015"
+    },
+    {
+      "id": "stu-16",
+      "sno": 16,
+      "name": "Chandana. Manche",
+      "roll_number": "261105B303016"
+    },
+    {
+      "id": "stu-17",
+      "sno": 17,
+      "name": "Dyavanapelly Pragnay",
+      "roll_number": "261105B303017"
+    },
+    {
+      "id": "stu-18",
+      "sno": 18,
+      "name": "Shrushti",
+      "roll_number": "261105B303018"
+    },
+    {
+      "id": "stu-19",
+      "sno": 19,
+      "name": "Md Shoaib Alam",
+      "roll_number": "261105B303019"
+    },
+    {
+      "id": "stu-20",
+      "sno": 20,
+      "name": "Vojjala Sai Shayan",
+      "roll_number": "261105B303020"
+    },
+    {
+      "id": "stu-21",
+      "sno": 21,
+      "name": "Merugu Jagadish",
+      "roll_number": "261105B303021"
+    },
+    {
+      "id": "stu-22",
+      "sno": 22,
+      "name": "Chiluveru Vishnu Vardhan",
+      "roll_number": "261105B303022"
+    },
+    {
+      "id": "stu-23",
+      "sno": 23,
+      "name": "Atiya Begum",
+      "roll_number": "261105B303023"
+    },
+    {
+      "id": "stu-24",
+      "sno": 24,
+      "name": "Ariz Ahsan",
+      "roll_number": "261105B303024"
+    },
+    {
+      "id": "stu-25",
+      "sno": 25,
+      "name": "Eelaprolu Uday Sri",
+      "roll_number": "261105B303025"
+    },
+    {
+      "id": "stu-26",
+      "sno": 26,
+      "name": "Bharath Kumar",
+      "roll_number": "261105B303026"
+    },
+    {
+      "id": "stu-27",
+      "sno": 27,
+      "name": "Cheripally Sai Tharuni",
+      "roll_number": "261105B303027"
+    },
+    {
+      "id": "stu-28",
+      "sno": 28,
+      "name": "S Nikeeth Reddy",
+      "roll_number": "261105B303028"
+    },
+    {
+      "id": "stu-29",
+      "sno": 29,
+      "name": "Sirija Naragam",
+      "roll_number": "261105B303029"
+    },
+    {
+      "id": "stu-30",
+      "sno": 30,
+      "name": "Mangali Deekshith",
+      "roll_number": "261105B303030"
+    },
+    {
+      "id": "stu-31",
+      "sno": 31,
+      "name": "Jaggari Deekshitha",
+      "roll_number": "261105B303031"
+    },
+    {
+      "id": "stu-32",
+      "sno": 32,
+      "name": "Gollapalli Shiva Prasad Goud",
+      "roll_number": "261105B303032"
+    },
+    {
+      "id": "stu-33",
+      "sno": 33,
+      "name": "Kumba Shiva",
+      "roll_number": "261105B303033"
+    },
+    {
+      "id": "stu-34",
+      "sno": 34,
+      "name": "Vanga Ramcharan Reddy",
+      "roll_number": "261105B303034"
+    },
+    {
+      "id": "stu-35",
+      "sno": 35,
+      "name": "E V N R Prabhat",
+      "roll_number": "261105B303035"
+    },
+    {
+      "id": "stu-36",
+      "sno": 36,
+      "name": "Bonakurthi Shiva",
+      "roll_number": "261105B303036"
+    },
+    {
+      "id": "stu-37",
+      "sno": 37,
+      "name": "Shaik Sajith",
+      "roll_number": "261105B303037"
+    },
+    {
+      "id": "stu-38",
+      "sno": 38,
+      "name": "Kunchem Karthik",
+      "roll_number": "261105B303038"
+    },
+    {
+      "id": "stu-39",
+      "sno": 39,
+      "name": "P.Santhosh Kumar",
+      "roll_number": "261105B303039"
+    },
+    {
+      "id": "stu-40",
+      "sno": 40,
+      "name": "Likki Eshanth Reddy",
+      "roll_number": "261105B303040"
+    },
+    {
+      "id": "stu-41",
+      "sno": 41,
+      "name": "Shaik Anas",
+      "roll_number": "261105B303041"
+    },
+    {
+      "id": "stu-42",
+      "sno": 42,
+      "name": "J.Chandu",
+      "roll_number": "261105B303042"
+    },
+    {
+      "id": "stu-43",
+      "sno": 43,
+      "name": "Akunuru Dev Sri Prasad",
+      "roll_number": "261105B303043"
+    },
+    {
+      "id": "stu-44",
+      "sno": 44,
+      "name": "Ravinuthala Naga Maneesha",
+      "roll_number": "261105B303044"
+    },
+    {
+      "id": "stu-45",
+      "sno": 45,
+      "name": "Shaik Asif",
+      "roll_number": "261105B303045"
+    },
+    {
+      "id": "stu-46",
+      "sno": 46,
+      "name": "Sai Mohan",
+      "roll_number": "261105B303046"
+    },
+    {
+      "id": "stu-47",
+      "sno": 47,
+      "name": "T. Vaishnavi",
+      "roll_number": "261105B303047"
+    },
+    {
+      "id": "stu-48",
+      "sno": 48,
+      "name": "N.Navyasri",
+      "roll_number": "261105B303048"
+    },
+    {
+      "id": "stu-49",
+      "sno": 49,
+      "name": "E. Pooja",
+      "roll_number": "261105B303049"
+    },
+    {
+      "id": "stu-50",
+      "sno": 50,
+      "name": "Vaishnavi Anil Pandhare",
+      "roll_number": "261105B303050"
+    },
+    {
+      "id": "stu-51",
+      "sno": 51,
+      "name": "A.Yashwanth Ram",
+      "roll_number": "261105B303051"
+    },
+    {
+      "id": "stu-52",
+      "sno": 52,
+      "name": "K.Sai Hrishikesh",
+      "roll_number": "261105B303052"
+    },
+    {
+      "id": "stu-53",
+      "sno": 53,
+      "name": "D. Shiva Shankar",
+      "roll_number": "261105B303053"
+    },
+    {
+      "id": "stu-54",
+      "sno": 54,
+      "name": "P.Kishor Kumar",
+      "roll_number": "261105B303054"
+    },
+    {
+      "id": "stu-55",
+      "sno": 55,
+      "name": "J. Mahesh Babu",
+      "roll_number": "261105B303055"
+    },
+    {
+      "id": "stu-56",
+      "sno": 56,
+      "name": "Mandla Ranga Shiva Hanuman",
+      "roll_number": "261105B303056"
+    },
+    {
+      "id": "stu-57",
+      "sno": 57,
+      "name": "Bhanu Ganga Prasad",
+      "roll_number": "261105B303057"
+    },
+    {
+      "id": "stu-58",
+      "sno": 58,
+      "name": "Maragani Pavan",
+      "roll_number": "261105B303058"
+    },
+    {
+      "id": "stu-59",
+      "sno": 59,
+      "name": "T.Kasi Hemanth",
+      "roll_number": "261105B303059"
+    },
+    {
+      "id": "stu-60",
+      "sno": 60,
+      "name": "Shaik Raithurrahman",
+      "roll_number": "261105B303060"
+    }
+  ],
+  "subjects": [
+    {
+      "id": "sub-1",
+      "name": "Web Development",
+      "assignment_title": "Assignment 1: Portfolio Webpage",
+      "due_date": "Nov 15, 2026",
+      "order_index": 1
+    },
+    {
+      "id": "sub-2",
+      "name": "English",
+      "assignment_title": "Assignment 1: Technical Report Writing",
+      "due_date": "Nov 18, 2026",
+      "order_index": 2
+    },
+    {
+      "id": "sub-3",
+      "name": "Math",
+      "assignment_title": "Assignment 1: Linear Algebra Problem Set",
+      "due_date": "Nov 20, 2026",
+      "order_index": 3
+    },
+    {
+      "id": "sub-4",
+      "name": "Physics",
+      "assignment_title": "Assignment 1: Semiconductor Physics",
+      "due_date": "Nov 22, 2026",
+      "order_index": 4
+    },
+    {
+      "id": "sub-5",
+      "name": "C Language",
+      "assignment_title": "Assignment 1: Pointers & Dynamic Memory",
+      "due_date": "Nov 25, 2026",
+      "order_index": 5
+    },
+    {
+      "id": "sub-6",
+      "name": "CRT (Python)",
+      "assignment_title": "Assignment 1: Data Structures & OOPs",
+      "due_date": "Nov 28, 2026",
+      "order_index": 6
+    }
+  ],
+  "submissions": {
+    "stu-1_sub-1": true,
+    "stu-1_sub-2": false,
+    "stu-1_sub-3": false,
+    "stu-1_sub-4": true,
+    "stu-1_sub-5": false,
+    "stu-1_sub-6": false,
+    "stu-2_sub-1": true,
+    "stu-2_sub-2": false,
+    "stu-2_sub-3": false,
+    "stu-2_sub-4": true,
+    "stu-2_sub-5": false,
+    "stu-2_sub-6": false,
+    "stu-3_sub-1": false,
+    "stu-3_sub-2": false,
+    "stu-3_sub-3": false,
+    "stu-3_sub-4": true,
+    "stu-3_sub-5": false,
+    "stu-3_sub-6": false,
+    "stu-4_sub-1": false,
+    "stu-4_sub-2": false,
+    "stu-4_sub-3": false,
+    "stu-4_sub-4": true,
+    "stu-4_sub-5": false,
+    "stu-4_sub-6": false,
+    "stu-5_sub-1": false,
+    "stu-5_sub-2": false,
+    "stu-5_sub-3": false,
+    "stu-5_sub-4": true,
+    "stu-5_sub-5": false,
+    "stu-5_sub-6": false,
+    "stu-6_sub-1": false,
+    "stu-6_sub-2": false,
+    "stu-6_sub-3": false,
+    "stu-6_sub-4": true,
+    "stu-6_sub-5": false,
+    "stu-6_sub-6": false,
+    "stu-7_sub-1": false,
+    "stu-7_sub-2": false,
+    "stu-7_sub-3": false,
+    "stu-7_sub-4": true,
+    "stu-7_sub-5": false,
+    "stu-7_sub-6": false,
+    "stu-8_sub-1": false,
+    "stu-8_sub-2": false,
+    "stu-8_sub-3": false,
+    "stu-8_sub-4": false,
+    "stu-8_sub-5": false,
+    "stu-8_sub-6": false,
+    "stu-9_sub-1": false,
+    "stu-9_sub-2": false,
+    "stu-9_sub-3": false,
+    "stu-9_sub-4": false,
+    "stu-9_sub-5": false,
+    "stu-9_sub-6": false,
+    "stu-10_sub-1": false,
+    "stu-10_sub-2": false,
+    "stu-10_sub-3": false,
+    "stu-10_sub-4": false,
+    "stu-10_sub-5": false,
+    "stu-10_sub-6": false,
+    "stu-11_sub-1": false,
+    "stu-11_sub-2": false,
+    "stu-11_sub-3": false,
+    "stu-11_sub-4": false,
+    "stu-11_sub-5": false,
+    "stu-11_sub-6": false,
+    "stu-12_sub-1": false,
+    "stu-12_sub-2": false,
+    "stu-12_sub-3": false,
+    "stu-12_sub-4": true,
+    "stu-12_sub-5": false,
+    "stu-12_sub-6": false,
+    "stu-13_sub-1": false,
+    "stu-13_sub-2": false,
+    "stu-13_sub-3": false,
+    "stu-13_sub-4": false,
+    "stu-13_sub-5": false,
+    "stu-13_sub-6": false,
+    "stu-14_sub-1": false,
+    "stu-14_sub-2": false,
+    "stu-14_sub-3": false,
+    "stu-14_sub-4": true,
+    "stu-14_sub-5": false,
+    "stu-14_sub-6": false,
+    "stu-15_sub-1": false,
+    "stu-15_sub-2": false,
+    "stu-15_sub-3": false,
+    "stu-15_sub-4": true,
+    "stu-15_sub-5": false,
+    "stu-15_sub-6": false,
+    "stu-16_sub-1": false,
+    "stu-16_sub-2": false,
+    "stu-16_sub-3": false,
+    "stu-16_sub-4": false,
+    "stu-16_sub-5": false,
+    "stu-16_sub-6": false,
+    "stu-17_sub-1": false,
+    "stu-17_sub-2": false,
+    "stu-17_sub-3": false,
+    "stu-17_sub-4": false,
+    "stu-17_sub-5": false,
+    "stu-17_sub-6": false,
+    "stu-18_sub-1": false,
+    "stu-18_sub-2": false,
+    "stu-18_sub-3": false,
+    "stu-18_sub-4": false,
+    "stu-18_sub-5": false,
+    "stu-18_sub-6": false,
+    "stu-19_sub-1": false,
+    "stu-19_sub-2": false,
+    "stu-19_sub-3": false,
+    "stu-19_sub-4": false,
+    "stu-19_sub-5": false,
+    "stu-19_sub-6": false,
+    "stu-20_sub-1": true,
+    "stu-20_sub-2": false,
+    "stu-20_sub-3": false,
+    "stu-20_sub-4": true,
+    "stu-20_sub-5": false,
+    "stu-20_sub-6": false,
+    "stu-21_sub-1": false,
+    "stu-21_sub-2": false,
+    "stu-21_sub-3": false,
+    "stu-21_sub-4": false,
+    "stu-21_sub-5": false,
+    "stu-21_sub-6": false,
+    "stu-22_sub-1": false,
+    "stu-22_sub-2": false,
+    "stu-22_sub-3": false,
+    "stu-22_sub-4": false,
+    "stu-22_sub-5": false,
+    "stu-22_sub-6": false,
+    "stu-23_sub-1": false,
+    "stu-23_sub-2": false,
+    "stu-23_sub-3": false,
+    "stu-23_sub-4": true,
+    "stu-23_sub-5": false,
+    "stu-23_sub-6": false,
+    "stu-24_sub-1": false,
+    "stu-24_sub-2": false,
+    "stu-24_sub-3": false,
+    "stu-24_sub-4": false,
+    "stu-24_sub-5": false,
+    "stu-24_sub-6": false,
+    "stu-25_sub-1": false,
+    "stu-25_sub-2": false,
+    "stu-25_sub-3": false,
+    "stu-25_sub-4": true,
+    "stu-25_sub-5": false,
+    "stu-25_sub-6": false,
+    "stu-26_sub-1": false,
+    "stu-26_sub-2": false,
+    "stu-26_sub-3": false,
+    "stu-26_sub-4": false,
+    "stu-26_sub-5": false,
+    "stu-26_sub-6": false,
+    "stu-27_sub-1": false,
+    "stu-27_sub-2": false,
+    "stu-27_sub-3": false,
+    "stu-27_sub-4": true,
+    "stu-27_sub-5": false,
+    "stu-27_sub-6": false,
+    "stu-28_sub-1": false,
+    "stu-28_sub-2": false,
+    "stu-28_sub-3": false,
+    "stu-28_sub-4": false,
+    "stu-28_sub-5": false,
+    "stu-28_sub-6": false,
+    "stu-29_sub-1": false,
+    "stu-29_sub-2": false,
+    "stu-29_sub-3": false,
+    "stu-29_sub-4": true,
+    "stu-29_sub-5": false,
+    "stu-29_sub-6": false,
+    "stu-30_sub-1": false,
+    "stu-30_sub-2": false,
+    "stu-30_sub-3": false,
+    "stu-30_sub-4": false,
+    "stu-30_sub-5": false,
+    "stu-30_sub-6": false,
+    "stu-31_sub-1": false,
+    "stu-31_sub-2": false,
+    "stu-31_sub-3": false,
+    "stu-31_sub-4": true,
+    "stu-31_sub-5": false,
+    "stu-31_sub-6": false,
+    "stu-32_sub-1": false,
+    "stu-32_sub-2": false,
+    "stu-32_sub-3": false,
+    "stu-32_sub-4": false,
+    "stu-32_sub-5": false,
+    "stu-32_sub-6": false,
+    "stu-33_sub-1": false,
+    "stu-33_sub-2": false,
+    "stu-33_sub-3": false,
+    "stu-33_sub-4": false,
+    "stu-33_sub-5": false,
+    "stu-33_sub-6": false,
+    "stu-34_sub-1": false,
+    "stu-34_sub-2": false,
+    "stu-34_sub-3": false,
+    "stu-34_sub-4": true,
+    "stu-34_sub-5": false,
+    "stu-34_sub-6": false,
+    "stu-35_sub-1": true,
+    "stu-35_sub-2": false,
+    "stu-35_sub-3": false,
+    "stu-35_sub-4": true,
+    "stu-35_sub-5": false,
+    "stu-35_sub-6": false,
+    "stu-36_sub-1": false,
+    "stu-36_sub-2": false,
+    "stu-36_sub-3": false,
+    "stu-36_sub-4": false,
+    "stu-36_sub-5": false,
+    "stu-36_sub-6": false,
+    "stu-37_sub-1": false,
+    "stu-37_sub-2": false,
+    "stu-37_sub-3": false,
+    "stu-37_sub-4": true,
+    "stu-37_sub-5": false,
+    "stu-37_sub-6": false,
+    "stu-38_sub-1": false,
+    "stu-38_sub-2": false,
+    "stu-38_sub-3": false,
+    "stu-38_sub-4": false,
+    "stu-38_sub-5": false,
+    "stu-38_sub-6": false,
+    "stu-39_sub-1": true,
+    "stu-39_sub-2": false,
+    "stu-39_sub-3": false,
+    "stu-39_sub-4": true,
+    "stu-39_sub-5": false,
+    "stu-39_sub-6": false,
+    "stu-40_sub-1": false,
+    "stu-40_sub-2": false,
+    "stu-40_sub-3": false,
+    "stu-40_sub-4": false,
+    "stu-40_sub-5": false,
+    "stu-40_sub-6": false,
+    "stu-41_sub-1": false,
+    "stu-41_sub-2": false,
+    "stu-41_sub-3": false,
+    "stu-41_sub-4": false,
+    "stu-41_sub-5": false,
+    "stu-41_sub-6": false,
+    "stu-42_sub-1": false,
+    "stu-42_sub-2": false,
+    "stu-42_sub-3": false,
+    "stu-42_sub-4": false,
+    "stu-42_sub-5": false,
+    "stu-42_sub-6": false,
+    "stu-43_sub-1": false,
+    "stu-43_sub-2": false,
+    "stu-43_sub-3": false,
+    "stu-43_sub-4": true,
+    "stu-43_sub-5": false,
+    "stu-43_sub-6": false,
+    "stu-44_sub-1": false,
+    "stu-44_sub-2": false,
+    "stu-44_sub-3": false,
+    "stu-44_sub-4": true,
+    "stu-44_sub-5": false,
+    "stu-44_sub-6": false,
+    "stu-45_sub-1": false,
+    "stu-45_sub-2": false,
+    "stu-45_sub-3": false,
+    "stu-45_sub-4": false,
+    "stu-45_sub-5": false,
+    "stu-45_sub-6": false,
+    "stu-46_sub-1": false,
+    "stu-46_sub-2": false,
+    "stu-46_sub-3": false,
+    "stu-46_sub-4": true,
+    "stu-46_sub-5": false,
+    "stu-46_sub-6": false,
+    "stu-47_sub-1": false,
+    "stu-47_sub-2": false,
+    "stu-47_sub-3": false,
+    "stu-47_sub-4": true,
+    "stu-47_sub-5": false,
+    "stu-47_sub-6": false,
+    "stu-48_sub-1": false,
+    "stu-48_sub-2": false,
+    "stu-48_sub-3": false,
+    "stu-48_sub-4": true,
+    "stu-48_sub-5": false,
+    "stu-48_sub-6": false,
+    "stu-49_sub-1": false,
+    "stu-49_sub-2": false,
+    "stu-49_sub-3": false,
+    "stu-49_sub-4": true,
+    "stu-49_sub-5": false,
+    "stu-49_sub-6": false,
+    "stu-50_sub-1": false,
+    "stu-50_sub-2": false,
+    "stu-50_sub-3": false,
+    "stu-50_sub-4": true,
+    "stu-50_sub-5": false,
+    "stu-50_sub-6": false,
+    "stu-51_sub-1": false,
+    "stu-51_sub-2": false,
+    "stu-51_sub-3": false,
+    "stu-51_sub-4": false,
+    "stu-51_sub-5": false,
+    "stu-51_sub-6": false,
+    "stu-52_sub-1": false,
+    "stu-52_sub-2": false,
+    "stu-52_sub-3": false,
+    "stu-52_sub-4": false,
+    "stu-52_sub-5": false,
+    "stu-52_sub-6": false,
+    "stu-53_sub-1": false,
+    "stu-53_sub-2": false,
+    "stu-53_sub-3": false,
+    "stu-53_sub-4": true,
+    "stu-53_sub-5": false,
+    "stu-53_sub-6": false,
+    "stu-54_sub-1": false,
+    "stu-54_sub-2": false,
+    "stu-54_sub-3": false,
+    "stu-54_sub-4": false,
+    "stu-54_sub-5": false,
+    "stu-54_sub-6": false,
+    "stu-55_sub-1": false,
+    "stu-55_sub-2": false,
+    "stu-55_sub-3": false,
+    "stu-55_sub-4": false,
+    "stu-55_sub-5": false,
+    "stu-55_sub-6": false,
+    "stu-56_sub-1": false,
+    "stu-56_sub-2": false,
+    "stu-56_sub-3": false,
+    "stu-56_sub-4": false,
+    "stu-56_sub-5": false,
+    "stu-56_sub-6": false,
+    "stu-57_sub-1": false,
+    "stu-57_sub-2": false,
+    "stu-57_sub-3": false,
+    "stu-57_sub-4": false,
+    "stu-57_sub-5": false,
+    "stu-57_sub-6": false,
+    "stu-58_sub-1": false,
+    "stu-58_sub-2": false,
+    "stu-58_sub-3": false,
+    "stu-58_sub-4": false,
+    "stu-58_sub-5": false,
+    "stu-58_sub-6": false,
+    "stu-59_sub-1": false,
+    "stu-59_sub-2": false,
+    "stu-59_sub-3": false,
+    "stu-59_sub-4": true,
+    "stu-59_sub-5": false,
+    "stu-59_sub-6": false,
+    "stu-60_sub-1": false,
+    "stu-60_sub-2": false,
+    "stu-60_sub-3": false,
+    "stu-60_sub-4": false,
+    "stu-60_sub-5": false,
+    "stu-60_sub-6": false
+  },
+  "activityLogs": [
+    {
+      "id": "log-1794318558516",
+      "description": "Submitted: Ganta Vaishnavi (Physics)",
+      "created_at": "2026-11-10T13:49:18.516Z"
+    },
+    {
+      "id": "log-1794318458614",
+      "description": "Submitted: P.Santhosh Kumar (Web Development)",
+      "created_at": "2026-11-10T13:47:38.614Z"
+    },
+    {
+      "id": "log-1794318455082",
+      "description": "Submitted: E V N R Prabhat (Web Development)",
+      "created_at": "2026-11-10T13:47:35.082Z"
+    },
+    {
+      "id": "log-1794318451308",
+      "description": "Submitted: Vojjala Sai Shayan (Web Development)",
+      "created_at": "2026-11-10T13:47:31.308Z"
+    },
+    {
+      "id": "log-1794318445462",
+      "description": "Submitted: Jeel Nileshkumar Patel (Web Development)",
+      "created_at": "2026-11-10T13:47:25.462Z"
+    },
+    {
+      "id": "log-1794318444928",
+      "description": "Submitted: Pathaan Mohammed Wahid Ali Khan (Web Development)",
+      "created_at": "2026-11-10T13:47:24.928Z"
+    },
+    {
+      "id": "log-1794318392635",
+      "description": "Submitted: Jaggari Deekshitha (Physics)",
+      "created_at": "2026-11-10T13:46:32.635Z"
+    },
+    {
+      "id": "log-1794318387287",
+      "description": "Submitted: T. Vaishnavi (Physics)",
+      "created_at": "2026-11-10T13:46:27.287Z"
+    },
+    {
+      "id": "log-1794318379381",
+      "description": "Submitted: N.Navyasri (Physics)",
+      "created_at": "2026-11-10T13:46:19.381Z"
+    },
+    {
+      "id": "log-1794318370342",
+      "description": "Submitted: Y.M.Abia Pritika Rani (Physics)",
+      "created_at": "2026-11-10T13:46:10.342Z"
+    },
+    {
+      "id": "log-1794318365713",
+      "description": "Submitted: Atiya Begum (Physics)",
+      "created_at": "2026-11-10T13:46:05.713Z"
+    },
+    {
+      "id": "log-1794318357545",
+      "description": "Submitted: Cheripally Sai Tharuni (Physics)",
+      "created_at": "2026-11-10T13:45:57.545Z"
+    },
+    {
+      "id": "log-1794318357134",
+      "description": "Pending: Cheripally Sai Tharuni (Physics)",
+      "created_at": "2026-11-10T13:45:57.134Z"
+    },
+    {
+      "id": "log-1794318356589",
+      "description": "Submitted: Cheripally Sai Tharuni (Physics)",
+      "created_at": "2026-11-10T13:45:56.589Z"
+    },
+    {
+      "id": "log-1794318345748",
+      "description": "Submitted: Eelaprolu Uday Sri (Physics)",
+      "created_at": "2026-11-10T13:45:45.748Z"
+    },
+    {
+      "id": "log-1794318335421",
+      "description": "Submitted: Ravinuthala Naga Maneesha (Physics)",
+      "created_at": "2026-11-10T13:45:35.421Z"
+    },
+    {
+      "id": "log-1794318329052",
+      "description": "Submitted: E. Pooja (Physics)",
+      "created_at": "2026-11-10T13:45:29.051Z"
+    },
+    {
+      "id": "log-1794318321883",
+      "description": "Submitted: Shaik Sana Sulthana (Physics)",
+      "created_at": "2026-11-10T13:45:21.883Z"
+    },
+    {
+      "id": "log-1794318306545",
+      "description": "Submitted: Vaishnavi Anil Pandhare (Physics)",
+      "created_at": "2026-11-10T13:45:06.544Z"
+    },
+    {
+      "id": "log-1794318301265",
+      "description": "Submitted: Sirija Naragam (Physics)",
+      "created_at": "2026-11-10T13:45:01.265Z"
+    },
+    {
+      "id": "log-1794318294984",
+      "description": "Submitted: Ashna Maira (Physics)",
+      "created_at": "2026-11-10T13:44:54.984Z"
+    },
+    {
+      "id": "log-1794318292307",
+      "description": "Submitted: Meharin K Oommen (Physics)",
+      "created_at": "2026-11-10T13:44:52.307Z"
+    },
+    {
+      "id": "log-1794318287209",
+      "description": "Submitted: Shaik Sajith (Physics)",
+      "created_at": "2026-11-10T13:44:47.209Z"
+    },
+    {
+      "id": "log-1794318271272",
+      "description": "Submitted: Akunuru Dev Sri Prasad (Physics)",
+      "created_at": "2026-11-10T13:44:31.272Z"
+    },
+    {
+      "id": "log-1794318266839",
+      "description": "Submitted: Sai Mohan (Physics)",
+      "created_at": "2026-11-10T13:44:26.839Z"
+    },
+    {
+      "id": "log-1794318258121",
+      "description": "Submitted: Vanga Ramcharan Reddy (Physics)",
+      "created_at": "2026-11-10T13:44:18.121Z"
+    },
+    {
+      "id": "log-1794318248658",
+      "description": "Submitted: T.Kasi Hemanth (Physics)",
+      "created_at": "2026-11-10T13:44:08.658Z"
+    },
+    {
+      "id": "log-1794318245019",
+      "description": "Submitted: D. Shiva Shankar (Physics)",
+      "created_at": "2026-11-10T13:44:05.019Z"
+    },
+    {
+      "id": "log-1794318234186",
+      "description": "Submitted: E V N R Prabhat (Physics)",
+      "created_at": "2026-11-10T13:43:54.186Z"
+    },
+    {
+      "id": "log-1794318231440",
+      "description": "Submitted: P.Santhosh Kumar (Physics)",
+      "created_at": "2026-11-10T13:43:51.440Z"
+    },
+    {
+      "id": "log-1794318218784",
+      "description": "Submitted: Sienna Moguloji (Physics)",
+      "created_at": "2026-11-10T13:43:38.784Z"
+    },
+    {
+      "id": "log-1794318191780",
+      "description": "Submitted: Vojjala Sai Shayan (Physics)",
+      "created_at": "2026-11-10T13:43:11.780Z"
+    },
+    {
+      "id": "log-1794318188170",
+      "description": "Submitted: Devaruppala Akshaya Preeti (Physics)",
+      "created_at": "2026-11-10T13:43:08.169Z"
+    },
+    {
+      "id": "log-1794318186403",
+      "description": "Submitted: Mohammad Akram (Physics)",
+      "created_at": "2026-11-10T13:43:06.403Z"
+    },
+    {
+      "id": "log-1794318183474",
+      "description": "Submitted: Jeel Nileshkumar Patel (Physics)",
+      "created_at": "2026-11-10T13:43:03.474Z"
+    },
+    {
+      "id": "log-1794318182662",
+      "description": "Submitted: Pathaan Mohammed Wahid Ali Khan (Physics)",
+      "created_at": "2026-11-10T13:43:02.662Z"
+    },
+    {
+      "id": "log-1794317616127",
+      "description": "RESET: All submissions cleared to Pending (all 60 students, all 6 subjects)",
+      "created_at": "2026-11-10T13:33:36.127Z"
+    },
+    {
+      "id": "log-1794317583051",
+      "description": "Submitted: Vojjala Sai Shayan (Physics)",
+      "created_at": "2026-11-10T13:33:03.051Z"
+    },
+    {
+      "id": "log-1794317581353",
+      "description": "Submitted: Vojjala Sai Shayan (Web Development)",
+      "created_at": "2026-11-10T13:33:01.353Z"
+    },
+    {
+      "id": "log-1794317563484",
+      "description": "Submitted: Ashna Maira (Physics)",
+      "created_at": "2026-11-10T13:32:43.484Z"
+    },
+    {
+      "id": "log-1794317561365",
+      "description": "Submitted: Meharin K Oommen (Physics)",
+      "created_at": "2026-11-10T13:32:41.365Z"
+    },
+    {
+      "id": "log-1794317556232",
+      "description": "Submitted: Devaruppala Akshaya Preeti (Physics)",
+      "created_at": "2026-11-10T13:32:36.232Z"
+    },
+    {
+      "id": "log-1794317551935",
+      "description": "Submitted: Mohammad Akram (Physics)",
+      "created_at": "2026-11-10T13:32:31.935Z"
+    },
+    {
+      "id": "log-1794317533406",
+      "description": "Submitted: Jeel Nileshkumar Patel (Physics)",
+      "created_at": "2026-11-10T13:32:13.406Z"
+    },
+    {
+      "id": "log-1794317525895",
+      "description": "Submitted: Sienna Moguloji (Physics)",
+      "created_at": "2026-11-10T13:32:05.895Z"
+    },
+    {
+      "id": "log-1794317523725",
+      "description": "Submitted: Pathaan Mohammed Wahid Ali Khan (Physics)",
+      "created_at": "2026-11-10T13:32:03.725Z"
+    },
+    {
+      "id": "log-1794317328643",
+      "description": "Pending: Pathaan Mohammed Wahid Ali Khan (Web Development)",
+      "created_at": "2026-11-10T13:28:48.643Z"
+    },
+    {
+      "id": "log-1794317328096",
+      "description": "Submitted: Pathaan Mohammed Wahid Ali Khan (Web Development)",
+      "created_at": "2026-11-10T13:28:48.096Z"
+    },
+    {
+      "id": "log-1794305500062",
+      "description": "RESET: All submissions cleared to Pending (all 60 students, all 6 subjects)",
+      "created_at": "2026-11-10T10:11:40.062Z"
+    },
+    {
+      "id": "log-1794304764559",
+      "description": "Submitted: Jeel Nileshkumar Patel (Web Development)",
+      "created_at": "2026-11-10T09:59:24.558Z"
+    }
+  ]
+}

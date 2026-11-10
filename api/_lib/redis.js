@@ -24,7 +24,18 @@ export const KEYS = {
 let redisClient;
 
 export function getRedis() {
-  if (!redisClient) redisClient = Redis.fromEnv();
+  if (!redisClient) {
+    const url = process.env.UPSTASH_REDIS_REST_URL || process.env.KV_REST_API_URL;
+    const token = process.env.UPSTASH_REDIS_REST_TOKEN || process.env.KV_REST_API_TOKEN;
+    if (!url || !token) {
+      const error = new Error(
+        'Redis is not configured. Set UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN, or KV_REST_API_URL and KV_REST_API_TOKEN.'
+      );
+      error.statusCode = 503;
+      throw error;
+    }
+    redisClient = new Redis({ url, token });
+  }
   return redisClient;
 }
 

@@ -42,6 +42,9 @@ export async function readBody(req) {
 }
 
 export function handleError(res, error) {
+  if (error?.statusCode === 503 && error?.message?.startsWith('Redis is not configured.')) {
+    return sendJson(res, 503, { success: false, error: error.message });
+  }
   if (
     error?.message === 'Invalid JSON body.' ||
     error?.message === 'JSON body must be an object.' ||
