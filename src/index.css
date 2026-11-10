@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Prevent horizontal overflow on mobile */
+    overflow-x: hidden;
+  }
+
+  body {
+    overflow-x: hidden;
+    /* iOS momentum scrolling */
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Minimum 14px font on all body text to pass mobile readability */
+  p, span, td, th, label, button, input, select {
+    font-size: max(14px, 1em);
+  }
+}
+
+/* Nice scrollbars on desktop — invisible thin on mobile */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(156, 163, 175, 0.4);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(156, 163, 175, 0.7);
+}
+
+/* Ensure tap targets are ≥ 44px on mobile */
+@media (max-width: 640px) {
+  button, [role="button"] {
+    min-height: 44px;
+  }
+
+  /* Allow the sticky table wrapper to scroll on mobile but prevent body overflow */
+  .table-scroll-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Print styles */
+@media print {
+  body { background: white !important; color: black !important; }
+  .no-print { display: none !important; }
+  .print-only { display: block !important; }
+  .print-only * { position: static !important; }
+  table { width: 100% !important; border-collapse: collapse !important; }
+  th, td { border: 1px solid #cbd5e1 !important; padding: 6px 8px !important; font-size: 11px !important; }
+}
+
+@media screen {
+  .print-only { display: none !important; }
+}
+
+@keyframes login-shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+
+.login-shake {
+  animation: login-shake 0.35s ease-in-out;
+}
