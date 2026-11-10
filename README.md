@@ -1,112 +1,46 @@
-# 🎓 CR Assignment Tracker — 100% Local Storage Mode
-### AIML Batch 1 (60 Students • 5 Subjects)
+# CR Assignment Tracker
 
-A fast, mobile-friendly web app built for the **Class Representative (CR)** to track assignment submissions for all **60 students** across **5 subjects**.
+A mobile-friendly assignment tracker for AIML Batch 1. Two CRs can sign in to the same Vercel deployment and share live updates through Upstash Redis. Student records contain only S.No, name, and roll number.
 
-**All data is stored and saved locally on your computer** — no cloud account, external server, or database subscription required!
+## Deploy to Vercel
 
----
+1. Push this project to a Git provider and import the repository in the Vercel dashboard.
+2. Select **Add New → Project**, choose the repository, and keep the detected **Vite** framework settings. The build command is `npm run build`; the output directory is `dist`.
+3. Open the Vercel project’s **Storage** tab, choose **Create Database**, select **Upstash for Redis**, create the database, and connect it to this project. The integration should add `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN`. If it does not, copy the REST URL and REST token from the Upstash database’s details into the project environment variables.
+4. Open **Settings → Environment Variables** and add these server-only variables for **Production** and **Preview**:
+   - `CR_USERNAME` = `CR`
+   - `CR_PASSWORD` = `cr123`
+   - `AUTH_SECRET` = a new random secret of at least 32 bytes. Generate one privately with `node -e "console.log(require('crypto').randomBytes(32).toString('base64url'))"` and paste the output; do not commit it.
+   - Confirm `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` are present for those environments.
+5. Redeploy after adding or changing environment variables. On the first successful login/state request, the serverless API seeds the 60 students, five subjects, and 300 pending submission records if Redis has not been initialized.
+6. Sign in from each CR’s device using the configured username and password. Both devices use the same cloud state and refresh it every five seconds and when the page regains focus.
 
-## 💾 How Local Storage Works
+The credentials, session secret, and Redis REST credentials are read only by server functions. Do not prefix them with `VITE_` or expose them as client-side variables.
+The Change Password action stores only a salted password hash in Redis; after a change, that shared hash takes precedence over the bootstrap `CR_PASSWORD` environment value.
 
-1. **Local File Database**: All submissions, student names, roll numbers, assignment titles, deadlines, and logs are stored in:
-   ```
-   data/tracker_state.json
-   ```
-2. **Instant Auto-Save**: Whenever you tick a checkbox or update a due date, it writes immediately to `data/tracker_state.json` on your PC and mirrors to your browser's local storage.
-3. **Local Wi-Fi Sharing**: Run the app on your computer, and anyone on the same Wi-Fi (classmates in the room or hostel) can open the live link on their phones using your computer's IP address (e.g. `http://192.168.1.5:5173`).
-4. **Live Realtime Sync**: Uses local Server-Sent Events (SSE). When you tick a box on your laptop or phone, every other connected device updates live without refreshing!
-5. **One-Click Backup & Restore**: Download a `.json` backup file anytime via the **Backup** button in the header, or restore previous data using the **Restore** button.
+## Import existing browser data
 
----
+After deployment, sign in and choose **Import browser data** in the header. Confirm the import. It uploads that browser origin’s saved submissions, subject titles/due dates, students, and activity log to Redis. This is a one-time import for the shared database. The button refuses to upload if there is no tracker data saved for that website origin.
 
-## 🌟 Features
+Browser local storage is isolated by website origin. If your existing ticks are on the old local site (for example `http://127.0.0.1:5173`) and the deployed Vercel site has a different URL, use the old site’s **Backup** button first, then sign in to Vercel and use **Restore** to upload that JSON backup. You can also use **Restore** to upload the existing `data/tracker_state.json` file directly. Restore strips CRT (Python) and its submission records while retaining the other five subjects.
 
-### 1. 🌐 Public View (No Login Required)
-- **60-Student Table**: Columns for `S.No`, `Student Name`, `Roll Number`, 5 Subjects, and `Submitted (x/5)`.
-- **Privacy First**: Student email addresses are completely omitted from all pages.
-- **Visual Status**: Green ✅ (`Done`) for submitted, Red ❌ (`Pending`) for incomplete.
-- **Search & Filters**: Search by student name or roll number (`261105B303001` to `261105B303060`), filter by pending subjects, or view completed students.
-- **Summary Progress Bar**: Top metrics bar showing submitted count, pending count, and percentage progress for each subject.
-- **Sticky Table Navigation**: Sticky header (`sticky top-0`) and sticky name column (`sticky left-0`) for smooth phone scrolling.
-- **Dark & Light Mode**: Accessible toggle with persistent theme memory.
+The regular **Backup** button downloads the current cloud state as JSON. **Restore** uploads a selected JSON backup to Redis; legacy backups containing the retired CRT (Python) subject are accepted, and that subject is ignored.
 
-### 2. 🔐 CR Admin View (Login Protected)
-- **CR Login**: Configure the username and password using `VITE_CR_USERNAME` and `VITE_CR_PASSWORD` in your local `.env` file.
-- **Password changes**: Update the password from the Change Password option while signed in as CR admin.
-- **Lockout**: Five incorrect sign-in attempts lock access for five minutes.
-- **Public access**: Visitors can continue as viewers and see the read-only tracker; administrative controls are hidden, while subject-specific reports can be exported from a subject page.
-- **Per-subject checking**: Open any subject card for its own searchable, filterable student list, with live submitted/pending counts and subject-specific CSV/PDF reports. CR users can toggle student status by row and use confirmed subject-only bulk actions.
-- **Shareable subject routes**: Subject pages use URL hashes, so refresh and browser Back/Forward retain and navigate the selected subject.
-- **Instant Checkboxes**: Click or tap any subject cell to tick/untick manually.
-- **Subject Focus Mode**: Fast-ticking screen with large, thumb-friendly tap cards to mark 60 students in seconds on your phone.
-- **Bulk Buttons**: "Mark all submitted" and "Clear all" buttons with confirmation dialogs.
-- **Editable Titles & Due Dates**: Edit the assignment title (e.g. *Assignment 1: Portfolio Webpage*) and deadline (e.g. *Nov 15, 2026*) directly from the interface.
-- **Export Reports**:
-  - **CSV Export**: Formatted spreadsheet of all 60 students and their status.
-  - **Printable PDF**: Clean, print-styled report layout.
-- **Activity Log**: Audit log showing recent assignment updates.
+## Local development
 
----
+`npm run build` builds the Vite frontend. To exercise Vercel Serverless Functions locally, install the Vercel CLI with `npm install --global vercel`, link the project with `vercel link`, pull its environment with `vercel env pull .env.local`, then run `npm run vercel:dev`. Plain `npm run dev` starts only the Vite frontend and does not provide API functions.
 
-## 📚 5 Fixed Subjects
-1. **Web Development**
-2. **English**
-3. **Math**
-4. **Physics**
-5. **C Language**
+## API
 
----
+- `POST /api/login`
+- `POST /api/logout`
+- `GET /api/state`
+- `POST /api/toggle`
+- `POST /api/subject-update`
+- `POST /api/bulk`
+- `POST /api/reset`
+- `POST /api/change-password`
+- `POST /api/import` (one-time browser import)
+- `POST /api/restore` (backup restore)
 
-## 🚀 How to Run Locally (Windows + VS Code)
-
-### Step 1: Open Terminal in VS Code
-Open the project folder (`CRM`) in VS Code, then open the terminal (`Ctrl + \``).
-
-### Step 2: Configure CR Login
-1. Set `VITE_CR_USERNAME` and `VITE_CR_PASSWORD` in `.env`. If `.env` does not exist, copy `.env.example` first.
-2. Keep `.env` private; it is excluded from Git. Do not replace an existing `.env` file if it contains other settings.
-
-### Step 3: Start the Local App
-Run either of the following commands:
-```powershell
-npm run dev
-```
-*or for the production server:*
-```powershell
-npm start
-```
-
-### Step 4: Open in Browser
-- **On your PC**: Open [http://localhost:5173](http://localhost:5173)
-- **On your Phone (same Wi-Fi)**: Look at the terminal output to find your local IP address (e.g. `http://192.168.1.XX:5173`) and open that URL in your phone browser!
-
-### Step 5: CR Access
-The app opens on the login page. Classmates can choose **Continue as Viewer (read-only)**; the CR can sign in to mark submissions, edit assignment titles and due dates, reset submissions, and export reports.
-
----
-
-## 📂 Project Structure
-```
-CRM/
-├── data/
-│   ├── Hall_Ticket_Numbers_3001-3060.xlsx  # Original student list (60 students)
-│   └── tracker_state.json                 # Active local database (auto-saved)
-├── server/
-│   └── localDbPlugin.js                   # Local Vite API & SSE sync server
-├── src/
-│   ├── components/                        # UI Components (Table, Stats, Focus Mode, etc.)
-│   ├── context/TrackerContext.jsx         # Local state & persistence manager
-│   ├── data/students_seed.json            # Student data (emails excluded for privacy)
-│   ├── App.jsx                            # Main layout
-│   └── index.css                          # Tailwind CSS & Print styles
-├── server.js                              # Standalone production server
-└── package.json
-```
-
----
-
-## 💾 Backup and Reset
-- **Backup**: Click the **Backup** button in the header to download a timestamped copy of `tracker_state.json`.
-- **Restore**: Click **Restore** and choose any saved `.json` backup file.
-- **Reset to Clean State**: Run `npm run init:db` in your terminal to regenerate a fresh `tracker_state.json` from the original Excel file.
+All endpoints other than login require a valid signed, HttpOnly session cookie. Login attempts are rate limited using Redis. Single-student submission changes update one Redis hash field, avoiding whole-state overwrite races between the two CRs.

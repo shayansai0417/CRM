@@ -8,7 +8,7 @@ function formatCountdown(seconds) {
   return `${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
 }
 
-export default function CRLoginPage({ onContinueAsViewer, onLoginSuccess }) {
+export default function CRLoginPage() {
   const { login } = useTracker();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -38,7 +38,6 @@ export default function CRLoginPage({ onContinueAsViewer, onLoginSuccess }) {
       await login(username, password);
       setUsername('');
       setPassword('');
-      onLoginSuccess();
     } catch (loginError) {
       if (loginError.retryAfter) {
         setLockedSeconds(loginError.retryAfter);
@@ -127,13 +126,6 @@ export default function CRLoginPage({ onContinueAsViewer, onLoginSuccess }) {
           </button>
         </form>
 
-        <button
-          type="button"
-          onClick={onContinueAsViewer}
-          className="mt-3 w-full min-h-[48px] rounded-xl border border-slate-300 dark:border-slate-700 px-4 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 transition hover:bg-slate-50 dark:hover:bg-slate-800"
-        >
-          Continue as Viewer (read-only)
-        </button>
       </section>
     </main>
   );

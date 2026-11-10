@@ -5,26 +5,24 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "vercel:dev": "vercel dev",
     "build": "vite build",
-    "start": "node server.js",
     "preview": "vite preview",
-    "init:db": "node scripts/init_local_db.js"
+    "test": "node scripts/test_sanity.js"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.49.1",
+    "@upstash/redis": "^1.41.0",
     "clsx": "^2.1.1",
     "lucide-react": "^1.16.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "tailwind-merge": "^2.6.0",
-    "xlsx": "^0.18.5"
+    "tailwind-merge": "^2.6.0"
   },
   "devDependencies": {
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
     "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "^10.4.20",
-    "dotenv": "^16.4.7",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.17",
     "vite": "^6.0.11"

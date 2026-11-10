@@ -56,15 +56,12 @@ function TrackerApp() {
     }
   }, [darkMode]);
 
-  // View state: 'grid' (standard 6-subject table) or 'focus' (fast single-subject ticker for CR)
+  // View state: 'grid' (standard five-subject table) or 'focus' (fast single-subject ticker for CR)
   const [viewMode, setViewMode] = useState('grid');
   const [activeFilter, setActiveFilter] = useState('all');
   const [activeSubjectId, setActiveSubjectId] = useState(subjectIdFromHash);
 
   // Modals
-  const [viewerMode, setViewerMode] = useState(
-    () => sessionStorage.getItem('cr_tracker_viewer_mode') === 'true'
-  );
   const [changePasswordModalOpen, setChangePasswordModalOpen] = useState(false);
   const [logModalOpen, setLogModalOpen] = useState(false);
   const [editingSubject, setEditingSubject] = useState(null);
@@ -105,21 +102,6 @@ function TrackerApp() {
       `${window.location.pathname}${window.location.search}`
     );
     setActiveSubjectId(null);
-  };
-
-  const continueAsViewer = () => {
-    sessionStorage.setItem('cr_tracker_viewer_mode', 'true');
-    setViewerMode(true);
-  };
-
-  const openCRLogin = () => {
-    sessionStorage.removeItem('cr_tracker_viewer_mode');
-    setViewerMode(false);
-  };
-
-  const handleLogout = () => {
-    sessionStorage.setItem('cr_tracker_viewer_mode', 'true');
-    setViewerMode(true);
   };
 
   const handleOpenConfirm = (config) => {
@@ -173,14 +155,7 @@ function TrackerApp() {
     );
   }
 
-  if (!isAdmin && !viewerMode) {
-    return (
-      <CRLoginPage
-        onContinueAsViewer={continueAsViewer}
-        onLoginSuccess={openCRLogin}
-      />
-    );
-  }
+  if (!isAdmin) return <CRLoginPage />;
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors overflow-x-clip">
@@ -197,8 +172,6 @@ function TrackerApp() {
         viewMode={viewMode}
         setViewMode={setViewMode}
         onResetAll={handleResetAll}
-        onOpenLogin={openCRLogin}
-        onLogout={handleLogout}
       />
 
       {/* Main Container */}
