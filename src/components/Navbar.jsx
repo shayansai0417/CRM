@@ -19,6 +19,7 @@ import {
   Trash2,
   Cloud,
   RotateCw,
+  CalendarDays,
 } from 'lucide-react';
 
 export default function Navbar({
@@ -28,6 +29,8 @@ export default function Navbar({
   openChangePasswordModal,
   viewMode,
   setViewMode,
+  pageMode,
+  setPageMode,
   onResetAll,
 }) {
   const {
@@ -114,10 +117,13 @@ export default function Navbar({
 
             {/* View mode switcher — admin only */}
             {isAdmin && (
-              <div className="hidden sm:flex bg-slate-100 dark:bg-slate-800 p-1 rounded-xl items-center space-x-1">
+              <div className="flex bg-slate-100 dark:bg-slate-800 p-1 rounded-xl items-center space-x-1">
                 <button
                   type="button"
-                  onClick={() => setViewMode('grid')}
+                  onClick={() => {
+                    setPageMode('dashboard');
+                    setViewMode('grid');
+                  }}
                   title="All Subjects Grid"
                   className={`px-2.5 py-1.5 text-xs font-semibold rounded-lg flex items-center space-x-1.5 transition ${
                     viewMode === 'grid'
@@ -126,11 +132,14 @@ export default function Navbar({
                   }`}
                 >
                   <LayoutGrid className="w-3.5 h-3.5" />
-                  <span className="hidden md:inline">All</span>
+                  <span>All</span>
                 </button>
                 <button
                   type="button"
-                  onClick={() => setViewMode('focus')}
+                  onClick={() => {
+                    setPageMode('dashboard');
+                    setViewMode('focus');
+                  }}
                   title="Focus Mode — one subject at a time"
                   className={`px-2.5 py-1.5 text-xs font-semibold rounded-lg flex items-center space-x-1.5 transition ${
                     viewMode === 'focus'
@@ -139,7 +148,21 @@ export default function Navbar({
                   }`}
                 >
                   <CheckSquare className="w-3.5 h-3.5" />
-                  <span className="hidden md:inline">Focus</span>
+                  <span>Focus</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setPageMode('attendance')}
+                  title="Attendance"
+                  aria-current={pageMode === 'attendance' ? 'page' : undefined}
+                  className={`px-2.5 py-1.5 text-xs font-semibold rounded-lg flex items-center space-x-1.5 transition ${
+                    pageMode === 'attendance'
+                      ? 'bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-300 shadow-sm'
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900'
+                  }`}
+                >
+                  <CalendarDays className="w-3.5 h-3.5" />
+                  <span>Attendance</span>
                 </button>
               </div>
             )}
@@ -222,7 +245,7 @@ export default function Navbar({
             )}
 
             {/* Export CSV / PDF */}
-            {isAdmin && (
+            {isAdmin && pageMode !== 'attendance' && (
               <>
                 <button
                   onClick={handleExportCSV}

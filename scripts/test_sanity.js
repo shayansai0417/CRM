@@ -1,7 +1,13 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import seedStudents from '../src/data/students_seed.json' with { type: 'json' };
-import { DEFAULT_SUBJECTS, cleanTrackerData } from '../api/_lib/redis.js';
+import {
+  DEFAULT_SUBJECTS,
+  cleanAttendanceHistory,
+  cleanTrackerData,
+  ensureSeeded,
+  isValidAttendanceDate,
+} from '../api/_lib/redis.js';
 import { withoutCrtSubject } from '../shared/subjectMigration.js';
 import { createSession, readSession } from '../api/_lib/auth.js';
 
@@ -26,6 +32,27 @@ assert.equal(safeState.students.length, 60);
 assert.equal(safeState.subjects.length, 5);
 assert.equal(Object.keys(safeState.submissions).length, 300);
 assert.ok(safeState.students.every((student) => !('email' in student)));
+
+assert.equal(isValidAttendanceDate('2026-11-13'), true);
+assert.equal(isValidAttendanceDate('2026-02-30'), false);
+assert.deepEqual(
+  cleanAttendanceHistory({ '2026-11-13': { 'stu-1': false } }, safeState.students),
+  { '2026-11-13': { 'stu-1': false } }
+);
+const existingRedisKeys = {
+  exists: async () => 0,
+  eval: async (_script, keys) => {
+    assert.deepEqual(keys, [
+      'cr-tracker:students',
+      'cr-tracker:subjects',
+      'cr-tracker:submissions',
+      'cr-tracker:last-updated',
+      'cr-tracker:initialized',
+    ]);
+    return 0;
+  },
+};
+await ensureSeeded(existingRedisKeys);
 
 process.env.CR_USERNAME = 'CR';
 process.env.AUTH_SECRET = 'test-secret-with-at-least-thirty-two-characters';

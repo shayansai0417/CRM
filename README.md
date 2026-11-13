@@ -12,7 +12,7 @@ A mobile-friendly assignment tracker for AIML Batch 1. Two CRs can sign in to th
    - `CR_PASSWORD` = `cr123`
    - `AUTH_SECRET` = a new random secret of at least 32 bytes. Generate one privately with `node -e "console.log(require('crypto').randomBytes(32).toString('base64url'))"` and paste the output; do not commit it.
    - Confirm `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` are present for those environments.
-5. Redeploy after adding or changing environment variables. On the first successful login/state request, the serverless API seeds the 60 students, five subjects, and 300 pending submission records if Redis has not been initialized.
+5. Redeploy after adding or changing environment variables. If Redis is completely empty, the serverless API seeds the 60 students, five subjects, and 300 pending submission records. Existing Redis keys are never overwritten by auto-seeding.
 6. Sign in from each CR’s device using the configured username and password. Both devices use the same cloud state and refresh it every five seconds and when the page regains focus.
 
 The credentials, session secret, and Redis REST credentials are read only by server functions. Do not prefix them with `VITE_` or expose them as client-side variables.
@@ -24,11 +24,11 @@ After deployment, sign in and choose **Import browser data** in the header. Conf
 
 Browser local storage is isolated by website origin. If your existing ticks are on the old local site (for example `http://127.0.0.1:5173`) and the deployed Vercel site has a different URL, use the old site’s **Backup** button first, then sign in to Vercel and use **Restore** to upload that JSON backup. You can also use **Restore** to upload the existing `data/tracker_state.json` file directly. Restore strips CRT (Python) and its submission records while retaining the other five subjects.
 
-The regular **Backup** button downloads the current cloud state as JSON. **Restore** uploads a selected JSON backup to Redis; legacy backups containing the retired CRT (Python) subject are accepted, and that subject is ignored.
+The regular **Backup** button downloads the current cloud state, including attendance history, as JSON. **Restore** uploads a selected JSON backup to Redis; older backups without attendance remain restorable and do not replace attendance records. Legacy backups containing the retired CRT (Python) subject are accepted, and that subject is ignored.
 
 ## Local development
 
-`npm run build` builds the Vite frontend. To exercise Vercel Serverless Functions locally, install the Vercel CLI with `npm install --global vercel`, link the project with `vercel link`, pull its environment with `vercel env pull .env.local`, then run `npm run vercel:dev`. Plain `npm run dev` starts only the Vite frontend and does not provide API functions.
+`npm run dev` serves the Vite frontend and invokes the existing API handlers through a development-only middleware. Add the CR credentials, `AUTH_SECRET`, and Upstash Redis REST URL/token from `.env.example` to your ignored `.env` file; without Redis configuration, the API reports a configuration error and shared login/data will not work. `npm run build` builds the frontend. The Vercel deployment serves `/api/*` as serverless functions without a catch-all rewrite. Alternatively, you can use the Vercel CLI locally with `vercel link`, `vercel env pull .env.local`, and `npm run vercel:dev`.
 
 ## API
 
@@ -42,5 +42,7 @@ The regular **Backup** button downloads the current cloud state as JSON. **Resto
 - `POST /api/change-password`
 - `POST /api/import` (one-time browser import)
 - `POST /api/restore` (backup restore)
+- `GET /api/attendance?date=YYYY-MM-DD` and `POST /api/attendance` (daily attendance and student/bulk updates)
+- `GET /api/attendance-report` (overall attendance report and backup history)
 
-All endpoints other than login require a valid signed, HttpOnly session cookie. Login attempts are rate limited using Redis. Single-student submission changes update one Redis hash field, avoiding whole-state overwrite races between the two CRs.
+All endpoints other than login require a valid signed, HttpOnly session cookie. Login attempts are rate limited using Redis. Single-student submission and attendance changes update one Redis hash field, avoiding whole-state overwrite races between the two CRs.

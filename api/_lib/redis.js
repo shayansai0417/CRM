@@ -67,36 +67,99 @@ function createSeedState() {
 export async function ensureSeeded(redis = getRedis()) {
   if (await redis.exists(KEYS.initialized)) return;
 
-  for (let attempt = 0; attempt < 30; attempt += 1) {
-    const lock = await redis.set('cr-tracker:seed-lock', '1', { nx: true, ex: 30 });
-    if (lock) {
-      try {
-        if (!(await redis.exists(KEYS.initialized))) {
-          const { students, submissions } = createSeedState();
-          const now = new Date().toISOString();
-          const transaction = redis.multi();
-          transaction.set(KEYS.students, JSON.stringify(students));
-          transaction.del(KEYS.subjects, KEYS.submissions, KEYS.activityLogs);
-          transaction.hset(
-            KEYS.subjects,
-            Object.fromEntries(DEFAULT_SUBJECTS.map((subject) => [subject.id, JSON.stringify(subject)]))
-          );
-          transaction.hset(KEYS.submissions, submissions);
-          transaction.set(KEYS.lastUpdated, now);
-          transaction.set(KEYS.initialized, '1');
-          await transaction.exec();
-        }
-        return;
-      } finally {
-        await redis.del('cr-tracker:seed-lock');
-      }
-    }
+  const { students, submissions } = createSeedState();
+  const subjects = DEFAULT_SUBJECTS.map((subject) => [subject.id, JSON.stringify(subject)]);
+  const submissionEntries = Object.entries(submissions);
+  const now = new Date().toISOString();
+  await redis.eval(
+    `if redis.call('DBSIZE') ~= 0 then return 0 end
+     redis.call('SET', KEYS[1], ARGV[1])
+     local subjectCount = tonumber(ARGV[3])
+     local index = 4
+     for _ = 1, subjectCount do
+       redis.call('HSET', KEYS[2], ARGV[index], ARGV[index + 1])
+       index = index + 2
+     end
+     while index <= #ARGV do
+       redis.call('HSET', KEYS[3], ARGV[index], ARGV[index + 1])
+       index = index + 2
+     end
+     redis.call('SET', KEYS[4], ARGV[2])
+     redis.call('SET', KEYS[5], '1')
+     return 1`,
+    [KEYS.students, KEYS.subjects, KEYS.submissions, KEYS.lastUpdated, KEYS.initialized],
+    [
+      JSON.stringify(students),
+      now,
+      String(subjects.length),
+      ...subjects.flat(),
+      ...submissionEntries.flatMap(([key, value]) => [key, value]),
+    ]
+  );
+}
 
-    await new Promise((resolve) => setTimeout(resolve, 100));
-    if (await redis.exists(KEYS.initialized)) return;
+export function isValidAttendanceDate(date) {
+  return typeof date === 'string' &&
+    /^\d{4}-\d{2}-\d{2}$/.test(date) &&
+    !Number.isNaN(Date.parse(`${date}T00:00:00.000Z`)) &&
+    new Date(`${date}T00:00:00.000Z`).toISOString().slice(0, 10) === date;
+}
+
+export async function readAttendanceForDate(redis, date, studentIds) {
+  const key = `attendance:${date}`;
+  await redis.hsetnx(key, '_initialized', '1');
+  const values = await redis.hgetall(key);
+  return Object.fromEntries(studentIds.map((studentId) => [
+    studentId,
+    values?.[studentId] !== '0' && values?.[studentId] !== 0 && values?.[studentId] !== false,
+  ]));
+}
+
+export async function readAttendanceHistory(redis, students) {
+  const keys = await redis.keys('attendance:????-??-??');
+  const studentIds = students.map((student) => student.id);
+  const dates = keys
+    .map((key) => key.slice('attendance:'.length))
+    .filter(isValidAttendanceDate)
+    .sort();
+  const history = {};
+  for (const date of dates) {
+    history[date] = await readAttendanceForDate(redis, date, studentIds);
   }
+  return history;
+}
 
-  throw new Error('Tracker data initialization is still in progress. Please retry.');
+export function cleanAttendanceHistory(history, students) {
+  if (!history || typeof history !== 'object' || Array.isArray(history)) {
+    throw new Error('Attendance backup data is invalid.');
+  }
+  if (!Array.isArray(students) || students.some((student) => !student?.id)) {
+    throw new Error('Attendance backup students are invalid.');
+  }
+  const studentIds = new Set(students.map((student) => student.id));
+  const cleaned = {};
+  for (const [date, records] of Object.entries(history)) {
+    if (!isValidAttendanceDate(date) || !records || typeof records !== 'object' || Array.isArray(records)) {
+      throw new Error('Attendance backup contains an invalid date or record.');
+    }
+    cleaned[date] = Object.fromEntries(
+      Object.entries(records)
+        .filter(([studentId, present]) => studentIds.has(studentId) && typeof present === 'boolean')
+        .map(([studentId, present]) => [studentId, present])
+    );
+  }
+  return cleaned;
+}
+
+export async function restoreAttendanceHistory(redis, history, students) {
+  const cleaned = cleanAttendanceHistory(history, students);
+  for (const [date, records] of Object.entries(cleaned)) {
+    const values = Object.fromEntries(
+      Object.entries(records).map(([studentId, present]) => [studentId, present ? '1' : '0'])
+    );
+    values._initialized = '1';
+    await redis.hset(`attendance:${date}`, values);
+  }
 }
 
 export async function readState(redis = getRedis()) {

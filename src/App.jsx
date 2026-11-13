@@ -11,6 +11,7 @@ import SubjectEditModal from './components/SubjectEditModal';
 import ActivityLogModal from './components/ActivityLogModal';
 import ConfirmModal from './components/ConfirmModal';
 import PrintReportView from './components/PrintReportView';
+import AttendancePage from './components/AttendancePage';
 import { exportToCSV } from './utils/exportUtils';
 import {
   CheckCircle,
@@ -58,6 +59,7 @@ function TrackerApp() {
 
   // View state: 'grid' (standard five-subject table) or 'focus' (fast single-subject ticker for CR)
   const [viewMode, setViewMode] = useState('grid');
+  const [pageMode, setPageMode] = useState('dashboard');
   const [activeFilter, setActiveFilter] = useState('all');
   const [activeSubjectId, setActiveSubjectId] = useState(subjectIdFromHash);
 
@@ -161,7 +163,7 @@ function TrackerApp() {
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors overflow-x-clip">
 
       {/* Printable Report View (Visible only during window.print) */}
-      {selectedSubject ? null : <PrintReportView />}
+      {selectedSubject || pageMode === 'attendance' ? null : <PrintReportView />}
 
       {/* Navigation Header */}
       <Navbar
@@ -171,6 +173,8 @@ function TrackerApp() {
         openChangePasswordModal={() => setChangePasswordModalOpen(true)}
         viewMode={viewMode}
         setViewMode={setViewMode}
+        pageMode={pageMode}
+        setPageMode={setPageMode}
         onResetAll={handleResetAll}
       />
 
@@ -178,7 +182,9 @@ function TrackerApp() {
       <main className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6 space-y-4 sm:space-y-6">
 
         {/* Top Summary Metrics Cards */}
-        {selectedSubject ? (
+        {pageMode === 'attendance' ? (
+          <AttendancePage />
+        ) : selectedSubject ? (
           <SubjectCheckView
             subject={selectedSubject}
             subjectIndex={subjectIndex}

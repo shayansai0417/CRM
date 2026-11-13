@@ -66,6 +66,52 @@ export function exportSubjectToCSV(students, subject, submissions) {
   URL.revokeObjectURL(url);
 }
 
+function downloadCsv(headers, rows, filename) {
+  const escapeCsv = (value) => `"${String(value).replace(/"/g, '""')}"`;
+  const content = [headers, ...rows].map((row) => row.map(escapeCsv).join(',')).join('\r\n');
+  const blob = new Blob([content], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+}
+
+export function exportAttendanceCsv(headers, rows, filename) {
+  downloadCsv(headers, rows, filename);
+}
+
+export function printAttendanceReport(title, headers, rows) {
+  const popup = window.open('', '_blank');
+  if (!popup) {
+    window.alert('Allow pop-ups to print or save the attendance report as a PDF.');
+    return;
+  }
+  const escapeHtml = (value) => String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+  const table = [headers, ...rows].map((row, index) => (
+    `<tr>${row.map((cell) => `<${index ? 'td' : 'th'}>${escapeHtml(cell)}</${index ? 'td' : 'th'}>`).join('')}</tr>`
+  )).join('');
+  popup.document.write(`<!doctype html><html><head><title>${escapeHtml(title)}</title>
+    <style>
+      body{font:12px Arial,sans-serif;color:#111;padding:24px}
+      h1{font-size:18px;margin:0 0 16px}
+      table{border-collapse:collapse;width:100%}
+      th,td{border:1px solid #999;padding:6px;text-align:left}
+      th{background:#eee}
+      @media print{body{padding:0}}
+    </style></head><body><h1>${escapeHtml(title)}</h1><table>${table}</table>
+    <script>window.onload=()=>window.print();</script></body></html>`);
+  popup.document.close();
+}
+
 export function printReport() {
   window.print();
 }

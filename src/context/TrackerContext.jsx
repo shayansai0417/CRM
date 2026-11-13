@@ -275,7 +275,7 @@ export function TrackerProvider({ children }) {
     if (succeeded) showToast('All submissions reset to Pending');
   }, [sendMutation, showToast, students, submissions, subjects, user]);
 
-  const buildBackup = useCallback(() => ({
+  const buildBackup = useCallback((attendanceHistory = {}) => ({
     version: 1,
     className: 'AIML Batch 1',
     exportedAt: new Date().toISOString(),
@@ -283,18 +283,29 @@ export function TrackerProvider({ children }) {
     subjects: withoutCrtSubject(subjects, submissions).subjects,
     submissions: withoutCrtSubject(subjects, submissions).submissions,
     activityLogs,
+    attendanceHistory,
   }), [activityLogs, students, submissions, subjects]);
 
-  const exportLocalBackup = useCallback(() => {
+  const exportLocalBackup = useCallback(async () => {
     if (!user) return;
-    const blob = new Blob([JSON.stringify(buildBackup(), null, 2)], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = `AIML_Batch_1_Tracker_Backup_${new Date().toISOString().slice(0, 10)}.json`;
-    link.click();
-    URL.revokeObjectURL(url);
-    showToast('Downloaded JSON backup');
+    try {
+      const response = await fetch('/api/attendance-report', {
+        credentials: 'same-origin',
+        cache: 'no-store',
+      });
+      const body = await responseJson(response);
+      const backup = buildBackup(body.attendanceHistory);
+      const blob = new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `AIML_Batch_1_Tracker_Backup_${new Date().toISOString().slice(0, 10)}.json`;
+      link.click();
+      URL.revokeObjectURL(url);
+      showToast('Downloaded JSON backup');
+    } catch (error) {
+      showToast(`Backup failed: ${error.message}`, 'error');
+    }
   }, [buildBackup, showToast, user]);
 
   const importLocalBackup = useCallback(async (jsonData) => {
