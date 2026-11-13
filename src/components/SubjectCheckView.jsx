@@ -215,7 +215,7 @@ export default function SubjectCheckView({
           </div>
         ) : (
           <>
-            <div className="hidden sm:block rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
+            <div className="hidden md:block rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
               <table className="w-full table-fixed text-left">
                 <thead className="sticky top-[232px] z-10 bg-slate-100 dark:bg-slate-800 text-xs font-bold uppercase tracking-wide text-slate-600 dark:text-slate-300">
                   <tr>
@@ -272,7 +272,7 @@ export default function SubjectCheckView({
               </table>
             </div>
 
-            <div className="sm:hidden space-y-2">
+            <div className="md:hidden space-y-2">
               {filteredStudents.map((student) => {
                 const submitted = Boolean(submissions[`${student.id}_${subject.id}`]);
                 return (
@@ -281,7 +281,7 @@ export default function SubjectCheckView({
                     type="button"
                     disabled={!isAdmin}
                     onClick={() => toggleStudentSubmission(student)}
-                    className={`flex w-full min-h-[72px] items-center justify-between gap-3 rounded-2xl border p-3 text-left shadow-sm transition ${
+                    className={`flex w-full min-h-[64px] items-center justify-between gap-3 rounded-2xl border p-3.5 text-left shadow-sm transition ${
                       submitted
                         ? 'border-emerald-200 dark:border-emerald-900 bg-emerald-50/70 dark:bg-emerald-950/30'
                         : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900'
@@ -291,8 +291,8 @@ export default function SubjectCheckView({
                       <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 font-mono font-bold text-slate-600 dark:text-slate-300">
                         {student.sno}
                       </span>
-                      <span className="min-w-0">
-                        <span className="block truncate font-semibold text-slate-900 dark:text-white">{student.name}</span>
+                      <span className="min-w-0 flex-1">
+                        <span className="block break-words font-bold text-base text-slate-900 dark:text-white leading-tight">{student.name}</span>
                         <span className="mt-0.5 block truncate font-mono text-xs text-slate-500 dark:text-slate-400">{student.roll_number}</span>
                       </span>
                     </span>

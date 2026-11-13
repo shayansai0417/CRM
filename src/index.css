@@ -21,6 +21,14 @@
   }
 }
 
+/* Safe area insets */
+.pt-safe {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+.pb-safe {
+  padding-bottom: max(1rem, env(safe-area-inset-bottom, 1rem));
+}
+
 /* Nice scrollbars on desktop — invisible thin on mobile */
 ::-webkit-scrollbar {
   width: 6px;

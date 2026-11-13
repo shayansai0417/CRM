@@ -280,11 +280,11 @@ export default function SubjectFocusMode({
                 >
                   {stu.sno}
                 </div>
-                <div className="min-w-0">
-                  <h4 className="text-sm font-bold text-slate-900 dark:text-white truncate">
+                <div className="min-w-0 flex-1">
+                  <h4 className="text-base font-bold text-slate-900 dark:text-white break-words leading-tight">
                     {stu.name}
                   </h4>
-                  <p className="text-xs font-mono text-slate-500 dark:text-slate-400 truncate">
+                  <p className="text-xs font-mono text-slate-500 dark:text-slate-400 mt-0.5">
                     {stu.roll_number}
                   </p>
                 </div>
